@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title class="fade-in">Contact Me</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a id="home" href="index.html">Home</a>
+
+  <h1>Contact Me</h1>
+  <p class="fade-in">Feel free to reach out via email:</p>
+  <a href="mailto:lennilid.contact@gmail.com" class="fade-in">lennilid.contact@gmail.com</a>
+
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your name" required><br>
+    <input type="email" name="email" placeholder="Your email" required><br>
+    <textarea name="message" placeholder="Your message" required></textarea><br>
+    <button type="submit">Send</button>
+  </form>
+
+<div class="socials fade-in">
+  <h2>Find me here</h2>
+  <div class="social-icons">
+    <a href="https://github.com/LenniLID" target="_blank" aria-label="GitHub">
+      <img src="icons/github.svg" alt="GitHub"/>
+    </a>
+    <a href="https://bsky.app/profile/lennilid.bsky.social" target="_blank" aria-label="Bluesky">
+      <img src="icons/bluesky.svg" alt="Bluesky"/>
+    </a>
+    <a href="#" aria-label="Discord" onclick="navigator.clipboard.writeText('lennilid'); alert('Discord copied: lennilid'); return false;">
+      <img src="icons/discord.svg" alt="Discord"/>
+    </a>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
