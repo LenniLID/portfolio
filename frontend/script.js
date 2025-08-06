@@ -15,7 +15,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         button.disabled = true;
         button.textContent = 'Sending...';
         
-        const response = await fetch('http://localhost:5000/submit-form', {
+        const response = await fetch('https://lenniapi.winniepat.de/submit-form', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
