@@ -16,6 +16,7 @@ CORS(app)
 ip_cooldown = defaultdict(dict)
 COOLDOWN_SECONDS = 600
 MAX_REQUESTS_PER_COOLDOWN = 1
+last_ping = {}
 
 def get_required_env(var_name: str) -> str:
     """Get required environment variable or raise ValueError."""
@@ -120,5 +121,19 @@ def submit_form():
             'error': 'An error occurred while processing your submission'
         }), 500
 
+@app.route("/ping", methods=["POST"])
+def ping():
+    data = request.get_json(force=True)
+    pc_name = data.get("pc", "unknown")
+    last_ping[pc_name] = time.time()
+    return jsonify({"status": "ok", "pc": pc_name, "last_ping": last_ping[pc_name]})
+
+@app.route("/status/<pc_name>", methods=["GET"])
+def status(pc_name):
+    now = time.time()
+    last = last_ping.get(pc_name, 0)
+    online = (now - last) < 60
+    return jsonify({"pc": pc_name, "online": online})
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

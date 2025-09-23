@@ -347,3 +347,7 @@ button:hover {
     transform: translateY(0);
   }
 }
+
+.status-online { color: #22c55e; font-weight: bold; }
+.status-offline { color: #ef4444; font-weight: bold; }
+.status-error { color: #f59e0b; font-weight: bold; }
