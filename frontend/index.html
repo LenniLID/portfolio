@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
 <body>
-<a id="home" href="index.html">Home</a>
 <a class="navigator" href="contact.html">Contact</a>
 <div class="big-text">Hai</div>
 <h1 id="hi" class="fade-in">I'm Lenni</h1>
@@ -28,7 +27,50 @@
 <div class="projects">
 </div>
 </div>
-<h1 id="status">Loading...</h1>
+
+<!-- PRESENCE SECTION (replace your old one) -->
+<section id="presence" class="presence-section">
+  <div class="presence-header">
+    <h2 class="description-title">Presence</h2>
+  </div>
+  <h3 id="status">Loading...</h3>
+  <div class="presence-grid">
+    <div class="presence-card" id="spotify-card">
+      <div class="card-art" style="background-image:url('https://i.scdn.co/image/ab67616d0000b273cf0f0f0f0f0f0f0f0f0f0f0f');"></div>
+      <div class="card-body">
+        <div class="card-title">The Strokes — Reptilia</div>
+        <div class="card-sub">Album: Room on Fire</div>
+        <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
+      </div>
+    </div>
+
+    <div class="presence-card" id="playlist-card">
+      <div class="card-icon">🎵</div>
+      <div class="card-body">
+        <div class="card-title">Coding Mix</div>
+        <div class="card-sub">The Strokes • Arctic Monkeys • Tame Impala</div>
+      </div>
+    </div>
+
+    <div class="presence-card" id="steam-card">
+      <div class="card-art" style="background-image:url('https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg');"></div>
+      <div class="card-body">
+        <div class="card-title">CS:GO</div>
+        <div class="card-sub">Played 12h (2w)</div>
+      </div>
+    </div>
+
+    <div class="presence-card" id="other-card">
+      <div class="card-icon">✨</div>
+      <div class="card-body">
+        <div class="card-title">Coding</div>
+        <div class="card-sub">Working on my Godot project</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <script src="script.js"></script>
 </body>
 </html>

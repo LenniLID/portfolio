@@ -178,6 +178,7 @@ a:hover {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .navigator {
@@ -254,15 +255,6 @@ button:hover {
   font-family: monospace;
   font-weight: bold;
   color: #AD49E1;
-}
- 
-#home {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: monospace;
-  color: #999999;
-  font-size: 1rem;
 }
 
 .socials {
@@ -380,3 +372,79 @@ button:hover {
 .status-online { color: #22c55e; font-weight: bold; text-align: center;}
 .status-offline { color: #ef4444; font-weight: bold; text-align: center;}
 .status-error { color: #f59e0b; font-weight: bold; text-align: center;}
+
+/* -------- Presence layout fixes (use this block) -------- */
+.presence-section {
+  width: 95%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+  padding: 0 12px;
+  display: block; /* keep stacking natural: header then grid */
+}
+
+/* header wrapper ensures real centering regardless of heading defaults */
+.presence-section > .presence-header {
+  display: flex;
+  justify-content: center; /* centers the child horizontally */
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* make the heading shrink to its content and avoid huge devtools blue box */
+.presence-section > .presence-header > .description-title {
+  display: inline-block;
+  margin: 0;
+  padding: 0.08rem 0.2rem;
+  text-align: center;
+  font-family: monospace;
+  color: #AD49E1;
+  font-size: 2.5rem;
+}
+
+/* Cards row: force a single row and allow horizontal scroll on narrow screens */
+.presence-section > .presence-grid {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;        /* don't drop under */
+  overflow-x: auto;         /* scroll if container too small */
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;      /* space for scrollbar on some UAs */
+}
+
+/* card size and appearance */
+.presence-section > .presence-grid > .presence-card {
+  flex: 0 0 260px;       /* fixed card width, won't shrink */
+  min-width: 260px;
+  display: flex;
+  gap: 12px;
+  background: linear-gradient(180deg, #252525, #222);
+  border-radius: 10px;
+  padding: 12px;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(173,73,225,0.07);
+  transition: transform .12s ease, box-shadow .12s ease;
+  min-height: 84px;
+}
+
+/* other card internals (kept from preview) */
+.presence-card .card-art {
+  width: 64px; height: 64px; border-radius: 8px; background-size: cover; background-position: center; flex-shrink: 0;
+}
+.presence-card .card-icon {
+  width: 64px; height: 64px; display:flex; align-items:center; justify-content:center; font-size:28px; background:#161616; border-radius:8px;
+}
+.presence-card .card-body { flex:1; min-width:0; }
+.presence-card .card-title { font-weight:700; font-family:monospace; color:#fff; font-size:1rem; }
+.presence-card .card-sub { color:#cfcfe0; font-size:.9rem; margin-top:4px; font-family:Inter, monospace; }
+.presence-card .progress { height:6px; width:100%; background:rgba(255,255,255,0.05); border-radius:99px; margin-top:8px; overflow:hidden; }
+.presence-card .progress-bar { height:100%; width:0%; background:linear-gradient(90deg,#AD49E1,#ba6de4); border-radius:99px; transition:width .25s linear; }
+
+/* small screens: shrink card visual elements but keep one-row behavior (horizontal scroll) */
+@media (max-width:520px){
+  .presence-card { flex: 0 0 220px; min-width:220px; }
+  .presence-card .card-art, .presence-card .card-icon { width:52px; height:52px; }
+  .presence-section > .presence-header > .description-title { font-size:1.05rem; }
+}
