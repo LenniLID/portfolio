@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
@@ -41,6 +41,14 @@ def check_rate_limit(ip: str) -> Optional[str]:
         remaining = int(COOLDOWN_SECONDS - (now - ip_cooldown[ip]['start']))
         return f"Too many requests. Please wait {remaining} seconds before submitting again."
     return None
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 @app.route('/submit-form', methods=['POST'])
 def submit_form():
